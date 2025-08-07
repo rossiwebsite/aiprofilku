@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tanya Jawab Tentangku</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #jawaban {
+      margin-top: 20px;
+      padding: 15px;
+      border: 1px solid #aaa;
+      background: #f9f9f9;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Tanya Jawab tentangku</h2>
+  
+  <p>ketik "menu" untuk melihat daftar menu
+  </p>
+
+  <input type="text" id="pertanyaan" placeholder="Tulis pertanyaan di sini..." />
+  <button onclick="jawab()">Tanya</button>
+
+  <div id="jawaban"></div>
+
+  <script>
+    const qa = {
+      "apa itu ai": "AI adalah singkatan dari Artificial Intelligence, yaitu kecerdasan buatan.",
+      
+      
+      "berapa hasil 2+2": "Hasilnya adalah 4.",
+      
+      
+
+       "menu":
+`beberapa menu yang tersedia:
+1.list jasa
+2.list fitur
+3.list harga jasa`,
+
+
+
+      "apa saja jasa yang tersedia?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "apa saja jasa yang tersedia":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "apa saja jasa yang ada?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "apa saja jasa yang ada":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "ana apa bae jasane?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "ana apa bae jasane":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "list jasa?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "list jasa":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa
+7.joki game free fire
+8.semua bisa di usahakan
+yang engga bisa mengembalikan dia yang sudah pergi`,
+
+
+       "apa aja jasa sing ana?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "Apa aja jasa sing ana":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "apa baen jasane?":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "apa baen jasane":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "list?":`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "list":
+`!warning!
+(semua jasa web berbentuk link)
+(harga?tanya langsung)
+(tawar harga?bisa)
+1.membuatkan website untuk menyimpan link apapun
+2.dapat membuat website surat cinta
+3.dapat membuat website ucapan ulang tahun
+4.jasa kirim pesan ke orang yang kalian suka
+5.mau belajar html,css,javascrip? bisa
+6.spam wa? bisa`,
+
+
+       "list fitur":
+`berikur beberapa fitur yang tersedia:
+1.tanya jawab
+2.kalkulator
+3.translet(blm dpt digunakan)`,
+       
+       
+       "siapa aku?":
+`ya nda tau kok tanya saya
+request pertanyaan <a href="https://wa.me/6285725080024" target="_blank">chat</a>`,
+
+
+       "siapa aku":
+`ya nda tau kok tanya saya,request pertanyaan <a href="https://wa.me/6285725080024" target="_blank">chat</a>`,
+
+
+       "aku siapa?":
+`ya nda tau kok tanya saya,request pertanyaan <a href="https://wa.me/6285725080024" target="_blank">chat</a>`,
+       
+       "aku siapa":
+`ya nda tau kok tanya saya,request pertanyaan <a href="https://wa.me/6285725080024" target="_blank">chat</a>`,
+
+
+       "siapa kamu?":
+       `Hasil Karya R,<a href="https://wa.me/6285725080024" target="_blank">chat</a> R`,
+       
+       
+       "siapa kamu":
+       `Hasil Karya R,<a href="https://wa.me/6285725080024" target="_blank">chat</a> R`,
+       
+       
+       "aplikasi yang digunakan":
+       "Acode",
+       
+       
+       "app": "Acode",
+       
+       
+       "berapa harga per jasa?":
+       "tanya aja langsung",
+       
+       
+       "berapa harga per jasa":
+       "tanya aja langsung",
+       
+       
+       "berapa harga jasa?":
+       "tanya aja langsung",
+       
+       
+       "berapa harga jasa":
+       "tanya aja langsung",
+       
+       
+       "list harga jasa":
+       "tanya aja langsung tawar bisa",
+    };
+
+    function hitungEkspresi(teks) {
+      let ekspresi = teks.replace(/×|x/gi, '*')
+                         .replace(/÷|:/g, '/')
+                         .replace(/,/g, '.');
+      if (/^[0-9\.\s\+\-\*\/]+$/.test(ekspresi)) {
+        try {
+          const hasil = eval(ekspresi);
+          const hasilFormatted = hasil.toString().replace('.', ',');
+          const tampilan = teks.replace(/\*/g, '×').replace(/\//g, '÷');
+          return `${tampilan} = ${hasilFormatted}`;
+        } catch {
+          return null;
+        }
+      }
+      return null;
+    }
+
+    async function translateOtomatis(teks, target) {
+      try {
+        const res = await fetch("https://libretranslate.com/translate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            q: teks,
+            source: "auto",
+            target: target,
+            format: "text"
+          })
+        });
+        const data = await res.json();
+        return data.translatedText;
+      } catch (err) {
+        return "Gagal menerjemahkan (koneksi atau server error).";
+      }
+    }
+
+    async function jawab() {
+      const input = document.getElementById("pertanyaan").value.toLowerCase().trim();
+      const output = document.getElementById("jawaban");
+
+      if (qa[input]) {
+        output.innerHTML = qa[input]; // Gunakan innerHTML agar HTML bisa dirender
+        return;
+      }
+
+      if (input.startsWith("translate ") || input.startsWith("terjemahkan ")) {
+        const kalimat = input.replace(/^translate |^terjemahkan /, "").trim();
+        const target = /^[a-z\s]+$/.test(kalimat) ? "id" : "en";
+        const hasil = await translateOtomatis(kalimat, target);
+        output.textContent = hasil;
+        return;
+      }
+
+      const hasilHitung = hitungEkspresi(input);
+      if (hasilHitung) {
+        output.textContent = hasilHitung;
+        return;
+      }
+
+      output.textContent = "Maaf, saya belum menambahkan jawaban untuk pertanyaan tersebut.";
+    }
+  </script>
+</body>
+</html>
